@@ -62,7 +62,6 @@
 		}
 	.container-small
 	{
-		line-height:5;
 		max-width:500px;
 	}
 	/*logo*/
@@ -73,4 +72,8 @@
 	background-size:80%;
 	background-repeat:no-repeat;
 	background-position:center center;
+}
+.tc
+{
+	text-align:center;
 }

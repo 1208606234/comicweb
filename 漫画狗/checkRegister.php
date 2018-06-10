@@ -12,6 +12,12 @@
 	<script src="js/register.js"></script>
 </head>
 <body>
+	<?php
+	include "conn.php"; 
+	$id = $_POST['id'];
+	$password = $_POST['password'];
+	
+	?>
 	<div class="navbar navbar-default">
 		<div class="container">
 			<div class="navbar-brand"><a href="index.php"></a></div>
@@ -42,29 +48,27 @@
 		<div class="container container-small">
 			<br>
 		
-			<div class="tc"><h1 style="color:white">用户注册</h1></div>
+			<div class="tc"><h1 style="color:white">
+			<?php
+			
+			if(isset($_POST['ok']))
+			{
+			$sql = "select * from tb_user where username='$id'";
+			$result = mysqli_query($conn,$sql);
+			if($row = mysqli_num_rows($result)){
+				echo "有相同的的用户名";
+			}
+			else
+			{
+			$rs = "INSERT INTO `tb_user` (`id`, `username`, `password`) VALUES (NULL, '$id', '$password');";
+			mysqli_query($conn,$rs);
+			echo "注册成功!请点击右上角登录!";
+			}
+		}
 
-			<form action="checkRegister.php" method="post" id="form" onsubmit="return check(this)">
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="用户名/手机/邮箱" id="id" name="id">
-				</div>
-				<div class="form-group">
-					<input type="password" class="form-control" placeholder="密码" id="password" name="password">
-				</div>
+			 ?>
+			</h1></div>
 
-				<div class="form-group">
-					<input type="password" class="form-control" placeholder="确认密码" id="realpassword" name="realpassword">
-				</div>
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="蜡笔小新的全名(中文)" id="xinname">
-				</div>
-				<div class="form-group">
-					<input type="text" class="form-control" placeholder="请输入右侧验证码!" id="yzm">
-				</div>
-				<div class="form-group">
-					<button type="submit" class="btn btn-primary btn-block" id="ok" name="ok">注册</button>
-				</div>
-			</form>
 			
 			
 		</div>
@@ -93,3 +97,5 @@
 </script>
 </body>
 </html>
+	
+	

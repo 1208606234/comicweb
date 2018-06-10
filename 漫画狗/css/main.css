@@ -2,5 +2,16 @@
 {
 	background-image:url(../images/cola.png);
 	width:50px;
-	background-size:cover;
+	background-size:80%;
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+.sidebar .list-group-item
+{
+	/*border:0;*/
+	border-radius:10px;
+	margin:5px;
+}
+.sidebar .list-group-item.active{
+	background-color:#eb3528;
 }

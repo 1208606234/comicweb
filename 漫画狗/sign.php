@@ -4,10 +4,27 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>漫画狗--你想要的所有</title>
-	<link rel="stylesheet" href="css/bootstrap.min.css">
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/sign.css">
 </head>
 <body>
+	<div class="navbar navbar-default">
+		<div class="container">
+			<div class="navbar-header">
+				<div class="navbar-brand"><a href="index.php"></a></div>
+			</div>
+			<ul class="nav navbar-nav">
+				<li><a href="index.php">首页</a></li>
+				<li><a href="#">更新</a></li>
+				<li><a href="#">排行榜</a></li>
+				<li><a href="#">分类</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li class="active"><a href="sign.php">登录</a></li>
+				<li><a href="register.php">注册</a></li>
+			</ul>
+		</div>
+	</div>
 	<div class="box">
 		<div class="top">
 
@@ -34,7 +51,7 @@
 					<button type="submit" class="btn btn-primary btn-block">登录</button>
 				</div>
 			</form>
-			<div style="text-align:center"><h2 style="color:white;">没有账号?<a href="register.php">注册</a></h2></div>
+			<div style="text-align:center"><h2 style="color:white;">没有账号?<a href="register.php">注册</a></h2><a href="#" style="color:white">->忘记密码?<-</a></div>
 			
 			
 		</div>
