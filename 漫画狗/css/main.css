@@ -1,0 +1,54 @@
+.navbar-brand
+{
+	background-image:url(../images/cola.png);
+	width:50px;
+	background-size:80%;
+	background-repeat:no-repeat;
+	background-position:center center;
+}
+.sidebar .list-group-item
+{
+	/*border:0;*/
+	margin:5px;
+}
+.sidebar .list-group-item.active{
+	background-color:#eb3528;
+}
+img,
+.sidebar .list-group-item
+{
+	border-radius:10px;
+}
+img
+{
+	display:block;
+	max-width:100%;
+	width:135px;
+	height:177px;
+}
+.news-list .title
+{
+	display:block;
+	font-size:30px;
+	font-weight:bold;
+}
+.news-list .info
+{
+	margin-top:30px;
+	color:#999;
+	line-height: 1.5;
+}
+.news-list-item
+{
+	padding-top:30px;
+	padding-bottom:30px;
+	border-bottom:1px solid #999;
+}
+.news-list-item:first-child
+{
+padding-top:5px;
+}
+.status
+{
+	color:#999;
+}
