@@ -22,14 +22,14 @@
 				<li><a href="#">排行榜</a></li>
 				<li><a href="#">分类</a></li>
 				<li>
+				<form action="seach.php" method="post" name="seach_name">
 				<div class="input-group" style="padding-top:7px;padding-left:200px;">
-					<input type="text" class="form-control" placeholder="搜索漫画">
+					<input type="text" name="ss" class="form-control" placeholder="搜索漫画">
 					<span class="input-group-btn">
-						<button class="btn btn-default" type="button">
-							Go!
-						</button>
+						<input type="submit" class="btn btn-default" name="ok" value="Go!">
 					</span>
 					</div><!-- /input-group -->
+					</form>
 				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">

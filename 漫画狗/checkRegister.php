@@ -20,16 +20,40 @@
 	?>
 	<div class="navbar navbar-default">
 		<div class="container">
-			<div class="navbar-brand"><a href="index.php"></a></div>
+			<div class="navbar-header">
+				<div class="navbar-brand"><a href="index.php"></a></div>
+			</div>
 			<ul class="nav navbar-nav">
-				<li><a href="index.php">首页</a></li>
+				<li class="active"><a href="index.php">首页</a></li>
 				<li><a href="#">更新</a></li>
 				<li><a href="#">排行榜</a></li>
 				<li><a href="#">分类</a></li>
+				<li>
+					<form action="seach.php" method="post" name="seach_name">
+				<div class="input-group" style="padding-top:7px;padding-left:200px;">
+					<input type="text" name="ss" class="form-control" placeholder="搜索漫画">
+					<span class="input-group-btn">
+						<input type="submit" class="btn btn-default" name="ok" value="Go!">
+					</span>
+					</div><!-- /input-group -->
+					</form>
+				</li>
 			</ul>
 			<ul class="nav navbar-nav navbar-right">
+				<li><a href="#">
+					<?php
+				include "conn.php";
+				session_start();
+				if($_SESSION['islogin']==1){
+				echo "<b>欢迎你:".$_SESSION['username']."</b>";
+				}
+				else{
+					echo "<b>未登录</b>";
+				}
+				?>
+				</a></li>
 				<li><a href="sign.php">登录</a></li>
-				<li class="active"><a href="register.php">注册</a></li>
+				<li><a href="register.php">注册</a></li>
 			</ul>
 		</div>
 	</div>
