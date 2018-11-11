@@ -45,6 +45,7 @@
 				</a></li>
 				<li><a href="sign.php">登录</a></li>
 				<li class="active"><a href="register.php">注册</a></li>
+				<li><a href="quitsign.php">退出登录</a></li>
 			</ul>
 		</div>
 	</div>

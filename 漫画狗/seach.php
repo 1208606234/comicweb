@@ -46,6 +46,7 @@
 				</a></li>
 				<li><a href="sign.php">登录</a></li>
 				<li><a href="register.php">注册</a></li>
+				<li><a href="quitsign.php">退出登录</a></li>
 			</ul>
 		</div>
 	</div>
@@ -74,8 +75,38 @@
 					<div class='col-xs-4'> -->
 						<?php
 
+							if($_SESSION['islogin']==1)
+							{
+							if(isset($_POST['ok']))
+							{
+									$soso = $_POST['ss'];
+									$soso_sql = "select * from tb_book where bookname like '%$soso%'";
+									$soso_result = mysqli_query($conn,$soso_sql);
+									while($soso_row=mysqli_fetch_array($soso_result)){
+										echo "<div class='news-list-item clearfix'>";
+								echo "<div class='col-xs-4'>";
+								echo "<img src=images/".$soso_row['bookimage'].">";
+								echo "</div>";
+								echo "<div class='col-xs-8'>";
+								echo "<div class='title'>";
+								echo $soso_row['bookname'];
+								echo "</div>";
+								echo "<div class='status'>状态:".$soso_row['bookzt']."</div>";
+								echo "<div class='info'>".$soso_row['bookinfo']."</div>";
+								echo "<div><a href=#><input style='max-width:200px' class='btn btn-primary btn-block' type='button' value='预览'></a></div>";
+									echo "<div><a href=#><input style='max-width:200px;margin-top:20px;background-color:red;' class='btn btn-primary btn-block' type='button' value='下载'></a></div>";
+								echo "</div>";
+								echo "</div>";
+
 							
-							if(isset($_POST['ok'])){
+									}
+									
+								}
+							}
+							else
+							{
+								if(isset($_POST['ok']))
+							{
 									$soso = $_POST['ss'];
 									$soso_sql = "select * from tb_book where bookname like '%$soso%'";
 									$soso_result = mysqli_query($conn,$soso_sql);
@@ -96,6 +127,7 @@
 									}
 									
 								}
+							}
 							?>
 							
 

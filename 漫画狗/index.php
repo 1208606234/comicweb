@@ -47,6 +47,7 @@
 				</a></li>
 				<li><a href="sign.php">登录</a></li>
 				<li><a href="register.php">注册</a></li>
+				<li><a href="quitsign.php">退出登录</a></li>
 			</ul>
 		</div>
 	</div>
@@ -73,54 +74,114 @@
 			<div class='news-list'>
 				<!-- <div class='news-list-item clearfix'>
 					<div class='col-xs-4'> -->
+						<!-- 进行数据库查询然后把资源现实在页面上，并且登录后可以现实下载接口 -->
 						<?php
-							$every_item = 4; // 每页显示4条
-							$sql1 = 'select * from tb_book';
-							$result1 = mysqli_query($conn,$sql1);
-							$rs = mysqli_num_rows($result1);
-							if($rs%$every_item==0){
-								$every_page = (int)($rs/$every_item);
+							if($_SESSION['islogin']==1)
+							{
+								$every_item = 4; // 每页显示4条
+								$sql1 = 'select * from tb_book';
+								$result1 = mysqli_query($conn,$sql1);
+								$rs = mysqli_num_rows($result1);
+								if($rs%$every_item==0){
+									$every_page = (int)($rs/$every_item);
+								}
+								else
+								{
+									$every_page = (int)($rs/$every_item)+1;
+								}
+								if($_GET['page']){
+									$page = $_GET['page'];
+									$start = ($page-1)*$every_item;
+								}
+								else{
+									$page = 1;
+									$start = 0;
+								}
+								$sql = 'select * from tb_book limit '.$start.",".$every_item;
+								$result = mysqli_query($conn,$sql);
+
+								while($row=mysqli_fetch_array($result)){
+									echo "<div class='news-list-item clearfix'>";
+									echo "<div class='col-xs-4'>";
+									echo "<img src=images/".$row['bookimage'].">";
+									echo "</div>";
+									echo "<div class='col-xs-8'>";
+									echo "<div class='title'>";
+									echo $row['bookname'];
+									echo "</div>";
+									echo "<div class='status'>状态:".$row['bookzt']."</div>";
+									echo "<div class='info'>".$row['bookinfo']."</div>";
+									echo "<div><a href=#><input style='max-width:200px' class='btn btn-primary btn-block' type='button' value='预览'></a></div>";
+									echo "<div><a href=#><input style='max-width:200px;margin-top:20px;background-color:red;' class='btn btn-primary btn-block' type='button' value='下载'></a></div>";
+
+
+									echo "</div>";
+									echo "</div>";
+								}
+									echo "<div class='page-font'>";
+									echo "共".$every_page."页-当前是第".$page."页 ";
+									echo "<a href=?page=1>第一页 </a>";
+									echo "<a href=?page=".($page+1).">下一页 </a>";
+									echo "<a href=?page=".($page-1).">上一页 </a>";
+									echo "<a href=?page=".$every_page."> 尾页</a>";
+									echo "</div>";
+									if($_GET['page']==0)
+									{
+										echo "<script>alert('你达到了未知领域请返回!');</script>";
+									}
 							}
 							else
 							{
-								$every_page = (int)($rs/$every_item)+1;
-							}
-							if($_GET['page']){
-								$page = $_GET['page'];
-								$start = ($page-1)*$every_item;
-							}
-							else{
-								$page = 1;
-								$start = 0;
-							}
-							$sql = 'select * from tb_book limit '.$start.",".$every_item;
-							$result = mysqli_query($conn,$sql);
-
-							while($row=mysqli_fetch_array($result)){
-								echo "<div class='news-list-item clearfix'>";
-								echo "<div class='col-xs-4'>";
-								echo "<img src=images/".$row['bookimage'].">";
-								echo "</div>";
-								echo "<div class='col-xs-8'>";
-								echo "<div class='title'>";
-								echo $row['bookname'];
-								echo "</div>";
-								echo "<div class='status'>状态:".$row['bookzt']."</div>";
-								echo "<div class='info'>".$row['bookinfo']."</div>";
-								echo "</div>";
-								echo "</div>";
-							}
-								echo "<div class='page-font'>";
-								echo "共".$every_page."页-当前是第".$page."页 ";
-								echo "<a href=?page=1>第一页 </a>";
-								echo "<a href=?page=".($page+1).">下一页 </a>";
-								echo "<a href=?page=".($page-1).">上一页 </a>";
-								echo "<a href=?page=".$every_page."> 尾页</a>";
-								echo "</div>";
-								if($_GET['page']==0)
-								{
-									echo "<script>alert('你达到了未知领域请返回!');</script>";
+								$every_item = 4; // 每页显示4条
+								$sql1 = 'select * from tb_book';
+								$result1 = mysqli_query($conn,$sql1);
+								$rs = mysqli_num_rows($result1);
+								if($rs%$every_item==0){
+									$every_page = (int)($rs/$every_item);
 								}
+								else
+								{
+									$every_page = (int)($rs/$every_item)+1;
+								}
+								if($_GET['page']){
+									$page = $_GET['page'];
+									$start = ($page-1)*$every_item;
+								}
+								else{
+									$page = 1;
+									$start = 0;
+								}
+								$sql = 'select * from tb_book limit '.$start.",".$every_item;
+								$result = mysqli_query($conn,$sql);
+
+								while($row=mysqli_fetch_array($result)){
+									echo "<div class='news-list-item clearfix'>";
+									echo "<div class='col-xs-4'>";
+									echo "<img src=images/".$row['bookimage'].">";
+									echo "</div>";
+									echo "<div class='col-xs-8'>";
+									echo "<div class='title'>";
+									echo $row['bookname'];
+									echo "</div>";
+									echo "<div class='status'>状态:".$row['bookzt']."</div>";
+									echo "<div class='info'>".$row['bookinfo']."</div>";
+
+
+									echo "</div>";
+									echo "</div>";
+								}
+									echo "<div class='page-font'>";
+									echo "共".$every_page."页-当前是第".$page."页 ";
+									echo "<a href=?page=1>第一页 </a>";
+									echo "<a href=?page=".($page+1).">下一页 </a>";
+									echo "<a href=?page=".($page-1).">上一页 </a>";
+									echo "<a href=?page=".$every_page."> 尾页</a>";
+									echo "</div>";
+									if($_GET['page']==0)
+									{
+										echo "<script>alert('你达到了未知领域请返回!');</script>";
+									}
+							}
 
 	// 搜索模块
 							?>
@@ -129,7 +190,7 @@
 			</div>
 
 		</div>
-		<div class="col-sm-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id unde, ut placeat adipisci quod incidunt animi expedita enim similique sapiente? Consequuntur, accusamus dignissimos est, quod ad debitis cupiditate necessitatibus commodi!
+		<div class="col-sm-3" >数据库账号密码皆为root，隐藏了一个后台管理员地址adminmain.php可以用来管理页面，登录后可以看到下载和预览的按钮但是只是连接因为下载网上漫画资源是侵权的所以我就没做，就是这样。
 		</div>
 		</div>
 
