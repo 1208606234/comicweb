@@ -4,9 +4,9 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>漫画狗--你想要的所有</title>
-<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+<link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="css/main.css">
-	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.min.js"></script> 
+	<script src="js/jquery_min.js"></script> 
 </head>
 <body>
 	<div class="navbar navbar-default">
@@ -33,6 +33,7 @@
 			<ul class="nav navbar-nav navbar-right">
 				<li><a href="#">
 					<?php
+					error_reporting(E_ALL^E_NOTICE^E_WARNING);
 				include "conn.php";
 				session_start();
 				if($_SESSION['islogin']==1){
