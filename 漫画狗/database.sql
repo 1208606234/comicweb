@@ -85,7 +85,7 @@ CREATE TABLE `tb_user` (
 --
 
 INSERT INTO `tb_user` (`id`, `username`, `password`) VALUES
-(2, 'root', 'ghq19980425'),
+(2, 'root', 'ghq'),
 (11, 'helloworld', 'ghqghqghq'),
 (12, 'helloworld1', '123123123'),
 (13, 'hahahahha', '123123123');
